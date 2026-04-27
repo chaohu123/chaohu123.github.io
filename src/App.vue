@@ -292,7 +292,7 @@ onMounted(() => {
             target="_blank"
           >
             <el-icon><Link /></el-icon>
-            访问 GitHub
+            访问GitHub
           </el-button>
           <el-button
             size="large"
