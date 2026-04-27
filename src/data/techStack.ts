@@ -2,7 +2,11 @@ export type TechLevel = 'core' | 'extended' | 'tool'
 
 export type ProjectMeta = {
   title: string
+  period: string
+  role: string
+  stack: string[]
   description: string
+  highlights: string[]
   github: string
   demo: string
 }
@@ -23,22 +27,46 @@ export type TechEdge = {
 export const projects: ProjectMeta[] = [
   {
     title: '新疆数字文化平台',
+    period: '2025.09 - 2025.10',
+    role: '独立开发',
+    stack: ['Vue3', 'TypeScript', 'Pinia', 'Mapbox GL', 'Axios', 'Element Plus'],
     description:
-      '独立开发的文化资源检索单页应用，基于 Vue3 + TS + Mapbox GL 实现路线可视化、标注聚合与多条件筛选，并完成首屏与路由懒加载优化。',
+      '围绕文化资源展示与检索构建单页应用，支持地图路线可视化和多维条件筛选。',
+    highlights: [
+      '封装 Axios 请求层与拦截器，统一错误处理与 Token 刷新，提升接口稳定性。',
+      '实现 Mapbox GL 路线可视化、标注聚合与筛选联动，提升信息检索效率。',
+      '通过首屏渲染优化与路由懒加载，改善首次访问体验。'
+    ],
     github: 'https://github.com/chaohu123/xinjiang',
     demo: 'https://github.com/chaohu123'
   },
   {
     title: '超市售卖系统',
+    period: '2025.08 - 2025.09',
+    role: '独立开发',
+    stack: ['Vue3', 'uni-app', 'TypeScript', 'Pinia', 'Axios', 'Element Plus'],
     description:
-      '独立完成后台 + 小程序双端开发，覆盖商品、订单、用户与营销流程；通过 Pinia + Axios 封装保障状态一致性与接口容错。',
+      '搭建后台管理端与微信小程序双端系统，覆盖商品、订单、用户与营销核心流程。',
+    highlights: [
+      '实现商品分页、条件筛选与批量操作，减少后台重复操作步骤。',
+      '在小程序端完成购物车、下单与订单跟踪链路，完善业务闭环。',
+      '使用 Pinia 统一用户与订单状态，结合 Axios 异常拦截提升容错能力。'
+    ],
     github: 'https://github.com/huchao/supermarket-system',
     demo: 'https://github.com/chaohu123'
   },
   {
     title: 'Dslink 企业官网',
+    period: '2026.02 - 至今',
+    role: '前端实习生 / 前端开发',
+    stack: ['Vue3', 'TypeScript', 'Vite', 'Element Plus', 'Axios', 'SCSS'],
     description:
-      '在上海迪士领克科技实习期间负责官网前端开发，完成响应式适配、接口联调与动态渲染，并沉淀通用业务组件提升复用效率。',
+      '在实习期间负责企业官网前端落地，重点推进响应式适配、接口联调与组件复用。',
+    highlights: [
+      '独立完成页面静态搭建与多端样式适配，保证 PC 与移动端一致体验。',
+      '完成接口对接与动态渲染流程，保障内容更新和交互反馈稳定。',
+      '沉淀通用业务组件与工具函数，降低后续页面开发与维护成本。'
+    ],
     github: 'https://dslink.cn',
     demo: 'https://github.com/chaohu123'
   },
