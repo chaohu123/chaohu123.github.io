@@ -25,12 +25,14 @@ const props = defineProps<{
   activeName: string | null
   lockedName: string | null
   relatedNames: Set<string>
+  activeLevel: TechNodeMeta['level'] | null
 }>()
 
 const emit = defineEmits<{
   (e: 'node-enter', name: string): void
   (e: 'node-leave'): void
   (e: 'node-click', name: string): void
+  (e: 'level-click', level: TechNodeMeta['level']): void
 }>()
 
 const shellRef = ref<HTMLDivElement | null>(null)
@@ -314,6 +316,12 @@ const onPointerDown = (event: PointerEvent) => {
   }
 }
 
+const levelLabels: Array<{ key: TechNodeMeta['level']; label: string }> = [
+  { key: 'core', label: 'Core' },
+  { key: 'extended', label: 'Extended' },
+  { key: 'tool', label: 'Tools' }
+]
+
 watch(
   () => props.activeName,
   () => {
@@ -349,9 +357,16 @@ onBeforeUnmount(() => {
     <canvas ref="canvasRef" class="particle-graph-canvas"></canvas>
 
     <div class="graph-levels">
-      <span>Core</span>
-      <span>Extended</span>
-      <span>Tools</span>
+      <button
+        v-for="level in levelLabels"
+        :key="level.key"
+        type="button"
+        class="level-btn"
+        :class="{ active: props.activeLevel === level.key }"
+        @click.stop="emit('level-click', level.key)"
+      >
+        {{ level.label }}
+      </button>
     </div>
 
     <transition name="tooltip-fade">
@@ -403,19 +418,42 @@ onBeforeUnmount(() => {
   inset: 16px 18px auto 18px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  color: rgba(204, 219, 255, 0.42);
+  gap: 8px;
+}
+
+.level-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: rgba(122, 151, 255, 0.08);
+  color: rgba(204, 219, 255, 0.52);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  pointer-events: none;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.graph-levels span:nth-child(2) {
-  text-align: center;
+.level-btn:nth-child(2) {
+  justify-self: center;
 }
 
-.graph-levels span:nth-child(3) {
-  text-align: right;
+.level-btn:nth-child(3) {
+  justify-self: end;
+}
+
+.level-btn:hover {
+  color: rgba(226, 236, 255, 0.88);
+  background: rgba(122, 151, 255, 0.18);
+}
+
+.level-btn.active {
+  color: rgba(234, 241, 255, 0.96);
+  background: rgba(122, 151, 255, 0.24);
+  box-shadow: 0 0 0 1px rgba(148, 182, 255, 0.42) inset;
 }
 
 .particle-tooltip {

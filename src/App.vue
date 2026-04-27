@@ -19,7 +19,16 @@ const {
   clearActive
 } = useParticleInteraction(techStack, techEdges)
 
-const projectLookup = computed(() => new Map(projects.map((item) => [item.title, item])))
+const activeLevel = computed(() => techStack.find((item) => item.name === activeName.value)?.level ?? null)
+
+const onLevelSelect = (level: 'core' | 'extended' | 'tool') => {
+  if (activeLevel.value === level) {
+    clearActive()
+    return
+  }
+  const firstNode = techStack.find((item) => item.level === level)
+  if (firstNode) onTagClick(firstNode.name)
+}
 </script>
 
 <template>
@@ -28,18 +37,18 @@ const projectLookup = computed(() => new Map(projects.map((item) => [item.title,
       <el-card class="hero-card" shadow="hover">
         <div class="hero-header">
           <el-icon class="hero-icon"><UserFilled /></el-icon>
-          <span>Frontend Engineer Portfolio</span>
+          <span></span>
         </div>
         <h1>Hi, I'm <span class="accent">胡超</span></h1>
         <p class="intro">
-          专注构建高性能、强交互、可维护的前端产品，热爱可视化、工程化与用户体验，熟悉Vue3+TS全栈开发。
+          大连大学计算机科学与技术本科（2026届），现于上海迪士领克科技实习。可独立完成 Vue3 + TypeScript 项目从页面搭建、接口联调到性能优化的全流程开发，具备 PC / 移动端 / 小程序多端交付经验。
         </p>
         <div class="actions">
-          <el-button type="primary" size="large" tag="a" href="https://github.com/huchao" target="_blank">
+          <el-button type="primary" size="large" tag="a" href="https://github.com/chaohu123" target="_blank">
             <el-icon><Link /></el-icon>
             访问 GitHub
           </el-button>
-          <el-button size="large" plain class="demo-btn" tag="a" href="https://huchao-demo.vercel.app" target="_blank">
+          <el-button size="large" plain class="demo-btn" tag="a" href="https://github.com/chaohu123" target="_blank">
             查看项目演示
           </el-button>
         </div>
@@ -84,9 +93,11 @@ const projectLookup = computed(() => new Map(projects.map((item) => [item.title,
             :active-name="activeName"
             :locked-name="lockedName"
             :related-names="relatedNames"
+            :active-level="activeLevel"
             @node-enter="onNodeEnter"
             @node-leave="onNodeLeave"
             @node-click="onNodeClick"
+            @level-click="onLevelSelect"
           />
         </el-card>
 
@@ -94,7 +105,7 @@ const projectLookup = computed(() => new Map(projects.map((item) => [item.title,
           <template #header>
             <div class="panel-title">
               <el-icon><Trophy /></el-icon>
-              <span>Featured Projects</span>
+              <span>项目经验</span>
             </div>
           </template>
           <ul class="project-list">
@@ -123,8 +134,10 @@ const projectLookup = computed(() => new Map(projects.map((item) => [item.title,
               <span>联系我</span>
             </div>
           </template>
-          <p class="meta-item"><strong>邮箱：</strong> huchao.frontend@gmail.com</p>
-          <p class="meta-item"><strong>求职意向：</strong> 前端开发工程师 / 可视化开发工程师</p>
+          <p class="meta-item"><strong>电话：</strong> 17674771379</p>
+          <p class="meta-item"><strong>邮箱：</strong> 3251471239@qq.com</p>
+          <p class="meta-item"><strong>现居：</strong> 上海市浦东新区</p>
+          <p class="meta-item"><strong>求职意向：</strong> 前端开发工程师</p>
         </el-card>
 
         <el-card class="panel" shadow="hover">
@@ -135,34 +148,13 @@ const projectLookup = computed(() => new Map(projects.map((item) => [item.title,
             </div>
           </template>
           <div class="exp-block">
-            <p><strong>实习经历：</strong> 参与数字文化平台前端开发，负责地图可视化、组件封装与性能优化。</p>
-            <p><strong>荣誉奖励：</strong> 蓝桥杯省赛奖项、数学建模竞赛奖项。</p>
+            <p><strong>实习经历：</strong> 2026.02 至今于上海迪士领克科技担任前端实习生，负责企业官网前端落地、接口联调与动态渲染，并封装通用组件提升复用率。</p>
+            <p><strong>校内经历：</strong> 曾任数据科学工作室干事，参与网站维护、技术文稿发布与赛事技术支持。</p>
+            <p><strong>荣誉奖励：</strong> 蓝桥杯省二等奖、数学建模校赛一等奖、全国电子商务创新创业挑战赛校级三等奖。</p>
           </div>
         </el-card>
       </section>
 
-      <el-card class="panel active-tech-panel" :class="{ 'is-empty': !stableActiveNode }" shadow="hover">
-        <template #header>
-          <div class="panel-title">
-            <el-icon><Star /></el-icon>
-            <span>{{ stableActiveNode ? `${stableActiveNode.name} · 技术关系摘要` : '技术关系摘要' }}</span>
-          </div>
-        </template>
-        <p class="meta-item"><strong>一句话描述：</strong>{{ stableActiveNode?.description || '悬停或锁定一个技术标签后，将在此显示详细信息。' }}</p>
-        <p class="meta-item"><strong>使用场景：</strong>{{ stableActiveNode?.usage || '用于补充 Tech Stack 图谱中的语义说明与关联项目。' }}</p>
-        <div class="related-projects" v-if="stableActiveNode">
-          <a
-            v-for="title in stableActiveNode.projects"
-            :key="title"
-            class="related-project-link"
-            :href="projectLookup.get(title)?.demo || projectLookup.get(title)?.github || '#'"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {{ title }}
-          </a>
-        </div>
-      </el-card>
     </main>
   </div>
 </template>

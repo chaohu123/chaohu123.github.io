@@ -23,37 +23,34 @@ export type TechEdge = {
 export const projects: ProjectMeta[] = [
   {
     title: '新疆数字文化平台',
-    description: 'Vue3 + TS + Mapbox 的可视化单页应用，支持地图标注聚合、多条件筛选与首屏性能优化。',
-    github: 'https://github.com/huchao/xj-digital-culture-platform',
-    demo: 'https://huchao-demo.vercel.app/xj-digital-culture-platform'
+    description:
+      '独立开发的文化资源检索单页应用，基于 Vue3 + TS + Mapbox GL 实现路线可视化、标注聚合与多条件筛选，并完成首屏与路由懒加载优化。',
+    github: 'https://github.com/chaohu123/xinjiang',
+    demo: 'https://github.com/chaohu123'
   },
   {
     title: '超市售卖系统',
-    description: '基于 Vue3 + uni-app 的小程序与后台管理系统，覆盖购物链路与状态管理。',
+    description:
+      '独立完成后台 + 小程序双端开发，覆盖商品、订单、用户与营销流程；通过 Pinia + Axios 封装保障状态一致性与接口容错。',
     github: 'https://github.com/huchao/supermarket-system',
-    demo: 'https://huchao-demo.vercel.app/supermarket-system'
+    demo: 'https://github.com/chaohu123'
   },
   {
-    title: '企业官网项目',
-    description: '响应式企业官网开发，兼容 PC 与移动端，沉淀通用组件与页面还原方案。',
-    github: 'https://github.com/huchao/company-website',
-    demo: 'https://huchao-demo.vercel.app/company-website'
+    title: 'Dslink 企业官网',
+    description:
+      '在上海迪士领克科技实习期间负责官网前端开发，完成响应式适配、接口联调与动态渲染，并沉淀通用业务组件提升复用效率。',
+    github: 'https://dslink.cn',
+    demo: 'https://github.com/chaohu123'
   },
-  {
-    title: '个人主页可视化',
-    description: '围绕前端技术栈构建关系图与可视化交互，强调动画与体验表达。',
-    github: 'https://github.com/huchao',
-    demo: 'https://huchao-demo.vercel.app'
-  }
 ]
 
 export const techStack: TechNodeMeta[] = [
   {
     name: 'Vue3',
     level: 'core',
-    description: '组合式 API 与响应式系统，适合构建复杂单页应用。',
-    usage: '中大型业务页面、组件抽象与高交互界面。',
-    projects: ['新疆数字文化平台', '超市售卖系统', '企业官网项目', '个人主页可视化']
+    description: '以 Composition API 组织复杂业务，支持高复用组件与可维护状态流。',
+    usage: '企业官网、管理后台、可视化单页应用。',
+    projects: ['新疆数字文化平台', '超市售卖系统', 'Dslink 企业官网', '个人主页可视化']
   },
   {
     name: 'TypeScript',
@@ -65,9 +62,9 @@ export const techStack: TechNodeMeta[] = [
   {
     name: 'Vite',
     level: 'extended',
-    description: '现代前端构建工具，具备快速启动与良好扩展性。',
-    usage: '工程构建、开发体验优化与按需加载配置。',
-    projects: ['企业官网项目', '个人主页可视化']
+    description: '现代化构建工具链，支持快速启动与可控打包优化。',
+    usage: '工程构建、路由懒加载与性能优化实践。',
+    projects: ['Dslink 企业官网', '个人主页可视化']
   },
   {
     name: 'Pinia',
@@ -88,7 +85,7 @@ export const techStack: TechNodeMeta[] = [
     level: 'extended',
     description: 'Vue3 生态中的组件库，适合中后台与信息型页面。',
     usage: '表单、弹层、数据展示等通用 UI 场景。',
-    projects: ['企业官网项目', '个人主页可视化']
+    projects: ['Dslink 企业官网', '个人主页可视化', '超市售卖系统', '新疆数字文化平台']
   },
   {
     name: 'Mapbox GL',
@@ -100,9 +97,9 @@ export const techStack: TechNodeMeta[] = [
   {
     name: 'Axios',
     level: 'tool',
-    description: '请求封装基础设施，便于统一拦截与错误处理。',
-    usage: '接口请求封装、鉴权与错误兜底。',
-    projects: ['超市售卖系统', '企业官网项目']
+    description: '统一请求封装与拦截器体系，支持 Token 注入、错误兜底与自动刷新。',
+    usage: '接口联调、异常拦截与通用请求层建设。',
+    projects: ['超市售卖系统', 'Dslink 企业官网', '新疆数字文化平台']
   },
   {
     name: 'Three.js',
@@ -123,14 +120,21 @@ export const techStack: TechNodeMeta[] = [
     level: 'tool',
     description: '增强型 CSS 预处理器，便于样式拆分与主题管理。',
     usage: '复杂样式组织、变量与混入复用。',
-    projects: ['企业官网项目', '个人主页可视化']
+    projects: ['Dslink 企业官网', '个人主页可视化']
   },
   {
     name: 'Node.js',
     level: 'tool',
     description: '前端工程化与脚本环境基础设施。',
     usage: '构建脚本、自动化任务与开发环境支持。',
-    projects: ['超市售卖系统', '企业官网项目', '个人主页可视化']
+    projects: ['超市售卖系统', 'Dslink 企业官网', '个人主页可视化']
+  },
+  {
+    name: 'Git',
+    level: 'tool',
+    description: '分布式版本控制工具，支撑多人协作与代码版本追踪。',
+    usage: '分支协作、代码回溯、发布流程管理。',
+    projects: ['新疆数字文化平台', '超市售卖系统', 'Dslink 企业官网', '个人主页可视化']
   }
 ]
 
@@ -143,6 +147,8 @@ export const techEdges: TechEdge[] = [
   { source: 'Vue3', target: 'Mapbox GL' },
   { source: 'TypeScript', target: 'Axios' },
   { source: 'TypeScript', target: 'Node.js' },
+  { source: 'Node.js', target: 'Git' },
+  { source: 'Vue3', target: 'Git' },
   { source: 'Vite', target: 'SCSS' },
   { source: 'Three.js', target: 'TypeScript' },
   { source: 'ECharts', target: 'TypeScript' },
