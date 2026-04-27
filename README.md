@@ -15,7 +15,7 @@
 
 - **候选人**：胡超
 - **目标岗位**：前端开发工程师
-- **当前状态**：在岗实习（上海）
+- **当前状态**：离职
 - **技术关键词**：Vue3、TypeScript、Pinia、Axios、uni-app、Element Plus、Mapbox GL、Git
 - **个人主页 / 仓库主页**：<https://github.com/chaohu123>
 
@@ -85,18 +85,7 @@ src/
   style.css                     # 全局样式
 ```
 
----
-
-## 可维护性说明
-
-如果用于持续求职迭代，建议优先维护以下字段：
-
-- `projects[].description`：用“职责 + 动作 + 结果”描述项目价值
-- `projects[].github / projects[].demo`：保持链接可访问
-- `techStack[].usage`：与目标岗位 JD 关键词保持一致
-- `techEdges`：保持技能之间关系可解释，便于面试展开
-
----
+---image.png
 
 ## 联系方式
 

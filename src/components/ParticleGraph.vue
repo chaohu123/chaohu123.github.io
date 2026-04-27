@@ -437,6 +437,11 @@ onBeforeUnmount(() => {
     box-shadow 0.2s ease;
 }
 
+.level-btn:focus-visible {
+  outline: 2px solid rgba(174, 211, 255, 0.95);
+  outline-offset: 2px;
+}
+
 .level-btn:nth-child(2) {
   justify-self: center;
 }
@@ -531,5 +536,23 @@ onBeforeUnmount(() => {
 .tooltip-fade-leave-to {
   opacity: 0;
   transform: translateY(8px);
+}
+
+@media (max-width: 640px) {
+  .graph-levels {
+    inset: 12px 12px auto 12px;
+    gap: 6px;
+  }
+
+  .level-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .particle-tooltip {
+    width: min(230px, calc(100% - 24px));
+    padding: 12px;
+  }
 }
 </style>
