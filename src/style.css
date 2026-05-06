@@ -433,6 +433,28 @@ h1 {
   transform: translateY(-1px);
 }
 
+.project-list-shell {
+  max-height:881px;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-right: -4px;
+  scrollbar-gutter: stable;
+}
+
+.project-list-shell::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project-list-shell::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(125, 170, 255, 0.35);
+}
+
+.project-list-shell::-webkit-scrollbar-track {
+  background: rgba(24, 32, 63, 0.35);
+  border-radius: 999px;
+}
+
 .project-list {
   list-style: none;
   margin: 0;
@@ -857,6 +879,14 @@ html[data-theme='light'] .tech-tag.related {
 
 html[data-theme='light'] .project-highlights {
   color: rgba(46, 68, 116, 0.9);
+}
+
+html[data-theme='light'] .project-list-shell::-webkit-scrollbar-thumb {
+  background: rgba(98, 141, 227, 0.45);
+}
+
+html[data-theme='light'] .project-list-shell::-webkit-scrollbar-track {
+  background: rgba(114, 139, 221, 0.12);
 }
 
 html[data-theme='light'] .project-actions a,

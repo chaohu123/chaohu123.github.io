@@ -384,55 +384,57 @@ onMounted(() => {
               <span>项目经验</span>
             </div>
           </template>
-          <ul class="project-list">
-            <li v-for="project in projects" :key="project.title">
-              <article
-                class="project-card"
-                :class="{
-                  active: stableActiveNode?.projects.includes(project.title),
-                }"
-              >
-                <h3>{{ project.title }}</h3>
-                <p class="project-meta">
-                  <span>{{ project.period }}</span>
-                  <span>{{ project.role }}</span>
-                </p>
-                <div class="project-stack">
-                  <span
-                    v-for="tech in project.stack"
-                    :key="`${project.title}-${tech}`"
-                    >{{ tech }}</span
-                  >
-                </div>
-                <p>{{ project.description }}</p>
-                <ul class="project-highlights">
-                  <li v-for="item in getVisibleHighlights(project)" :key="item">
-                    {{ item }}
-                  </li>
-                </ul>
-                <button
-                  v-if="project.highlights.length > 2"
-                  type="button"
-                  class="project-toggle"
-                  @click="toggleProjectHighlights(project.title)"
+          <div class="project-list-shell">
+            <ul class="project-list">
+              <li v-for="project in projects" :key="project.title">
+                <article
+                  class="project-card"
+                  :class="{
+                    active: stableActiveNode?.projects.includes(project.title),
+                  }"
                 >
-                  {{
-                    expandedProjects.has(project.title)
-                      ? "收起亮点"
-                      : "展开亮点"
-                  }}
-                </button>
-                <div class="project-actions">
-                  <a :href="project.github" target="_blank" rel="noreferrer"
-                    >GitHub</a
+                  <h3>{{ project.title }}</h3>
+                  <p class="project-meta">
+                    <span>{{ project.period }}</span>
+                    <span>{{ project.role }}</span>
+                  </p>
+                  <div class="project-stack">
+                    <span
+                      v-for="tech in project.stack"
+                      :key="`${project.title}-${tech}`"
+                      >{{ tech }}</span
+                    >
+                  </div>
+                  <p>{{ project.description }}</p>
+                  <ul class="project-highlights">
+                    <li v-for="item in getVisibleHighlights(project)" :key="item">
+                      {{ item }}
+                    </li>
+                  </ul>
+                  <button
+                    v-if="project.highlights.length > 2"
+                    type="button"
+                    class="project-toggle"
+                    @click="toggleProjectHighlights(project.title)"
                   >
-                  <a :href="project.demo" target="_blank" rel="noreferrer"
-                    >项目主页</a
-                  >
-                </div>
-              </article>
-            </li>
-          </ul>
+                    {{
+                      expandedProjects.has(project.title)
+                        ? "收起亮点"
+                        : "展开亮点"
+                    }}
+                  </button>
+                  <div class="project-actions">
+                    <a :href="project.github" target="_blank" rel="noreferrer"
+                      >GitHub</a
+                    >
+                    <a :href="project.demo" target="_blank" rel="noreferrer"
+                      >项目主页</a
+                    >
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
         </el-card>
       </section>
 
